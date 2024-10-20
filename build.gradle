@@ -38,7 +38,11 @@ minecraft {
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
-repositories {}
+repositories {
+    maven {
+        url = "https://www.cursemaven.com"
+    }
+}
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
@@ -48,6 +52,7 @@ dependencies {
     implementation(jarJar("io.github.llamalad7:mixinextras-forge:0.3.5")) {
         jarJar.ranged(it, "[0.3.5,)")
     }
+    implementation fg.deobf("curse.maven:cwsm-621405:5619741")
 }
 
 tasks.named('processResources', ProcessResources).configure {
